@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments :: header-includes}">
+    <title>Students List</title>
+</head>
+<body>
+
+<nav th:replace="~{fragments :: navbar}"></nav>
+
+<main class="container container-custom mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>Student List</h1>
+        <a th:href="@{/students/new}" class="btn btn-primary">Add New Student</a>
+    </div>
+
+    <div th:if="${students.isEmpty()}" class="alert alert-info" role="alert">
+        No students found. Please add a new student.
+    </div>
+
+    <div th:if="${!students.isEmpty()}" class="table-responsive">
+        <table class="table table-striped table-hover table-bordered">
+            <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="student : ${students}">
+                <td th:text="${student.id}"></td>
+                <td th:text="${student.name}"></td>
+                <td th:text="${student.email}"></td>
+                <td>
+                    <a th:href="@{/students/edit/{id}(id=${student.id})}" class="btn btn-sm btn-warning me-1">Edit</a>
+                    <a th:href="@{/students/delete/{id}(id=${student.id})}" class="btn btn-sm btn-danger"
+                       onclick="return confirm('Are you sure you want to delete this student?');">Delete</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+
+<footer th:replace="~{fragments :: footer-scripts}"></footer>
+
+</body>
+</html>
