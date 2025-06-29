@@ -1,0 +1,9 @@
+target/
+!target/*.jar
+.git
+.gitignore
+README.md
+.settings/
+.classpath
+.project
+.factorypath 
