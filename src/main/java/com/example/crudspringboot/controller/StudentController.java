@@ -29,25 +29,25 @@ public class StudentController {
         return "redirect:/students";
     }
 
-    @RequestMapping("/students")
+    @GetMapping("/students")
     public String listStudents(Model model) {
         model.addAttribute("students", studentService.getAllStudents());
         return "students";
     }
 
-    @GetMapping("/new")
+    @GetMapping("/students/new")
     public String showAddStudentForm(Model model) {
         model.addAttribute("student", new Student());
         return "add-student";
     }
 
-    @PostMapping
+    @PostMapping("/students")
     public String saveStudent(@ModelAttribute("student") Student student) {
         studentService.saveStudent(student);
         return "redirect:/students";
     }
 
-    @GetMapping("/edit/{id}")
+    @GetMapping("/students/edit/{id}")
     public String showEditStudentForm(@PathVariable Long id, Model model) {
         Student student = studentService.getStudentById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid student Id:" + id));
@@ -55,14 +55,14 @@ public class StudentController {
         return "edit-student";
     }
 
-    @PostMapping("/{id}")
+    @PostMapping("/students/{id}")
     public String updateStudent(@PathVariable Long id, @ModelAttribute("student") Student student) {
         student.setId(id);
         studentService.saveStudent(student);
         return "redirect:/students";
     }
 
-    @GetMapping("/delete/{id}")
+    @GetMapping("/students/delete/{id}")
     public String deleteStudent(@PathVariable Long id) {
         studentService.deleteStudent(id);
         return "redirect:/students";
