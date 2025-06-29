@@ -59,8 +59,10 @@ public class StudentController {
 
     @PostMapping("/students")
     public String saveStudent(@ModelAttribute("student") Student student) {
-        logger.info("Saving student: {}", student.getName());
-        studentService.saveStudent(student);
+        logger.info("Saving student: {}", student != null ? student.getName() : "null");
+        if (student != null) {
+            studentService.saveStudent(student);
+        }
         return "redirect:/students";
     }
 
@@ -76,8 +78,10 @@ public class StudentController {
     @PostMapping("/students/{id}")
     public String updateStudent(@PathVariable Long id, @ModelAttribute("student") Student student) {
         logger.info("Updating student with id: {}", id);
-        student.setId(id);
-        studentService.saveStudent(student);
+        if (student != null) {
+            student.setId(id);
+            studentService.saveStudent(student);
+        }
         return "redirect:/students";
     }
 

@@ -4,3 +4,4 @@
 /home/yashraj/CRUD SPRING BOOT/src/main/java/com/example/crudspringboot/service/StudentService.java
 /home/yashraj/CRUD SPRING BOOT/src/main/java/com/example/crudspringboot/CrudSpringBootApplication.java
 /home/yashraj/CRUD SPRING BOOT/src/main/java/com/example/crudspringboot/controller/StudentController.java
+/home/yashraj/CRUD SPRING BOOT/src/main/java/com/example/crudspringboot/controller/CustomErrorController.java
