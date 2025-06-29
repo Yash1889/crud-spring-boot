@@ -5,4 +5,7 @@ nixPkgs = ["maven", "openjdk17"]
 cmds = ["mvn clean package -DskipTests"]
 
 [start]
-cmd = "java -jar target/crud-spring-boot-0.0.1-SNAPSHOT.jar" 
+cmd = "java -jar target/crud-spring-boot-0.0.1-SNAPSHOT.jar"
+
+[variables]
+JAVA_VERSION = "17" 
