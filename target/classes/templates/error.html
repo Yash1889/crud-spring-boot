@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments :: header-includes (pageTitle='Error')}">
+</head>
+<body>
+
+<nav th:replace="~{fragments :: navbar}"></nav>
+
+<main class="container container-custom mt-5">
+    <div class="card">
+        <div class="card-header bg-danger text-white">
+            <h2>Error <span th:text="${status}">500</span></h2>
+        </div>
+        <div class="card-body">
+            <div class="alert alert-danger" role="alert">
+                <h4 class="alert-heading">Oops! Something went wrong.</h4>
+                <p th:text="${message}">An error occurred while processing your request.</p>
+                <hr>
+                <p class="mb-0">
+                    <strong>Requested path:</strong> <span th:text="${path}">Unknown</span>
+                </p>
+            </div>
+            <div class="d-flex justify-content-center">
+                <a th:href="@{/students}" class="btn btn-primary me-2">Go to Students</a>
+                <a th:href="@{/}" class="btn btn-secondary">Go Home</a>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer th:replace="~{fragments :: footer-scripts}"></footer>
+
+</body>
+</html> 
