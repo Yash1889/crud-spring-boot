@@ -61,6 +61,57 @@ This is a simple Spring Boot application demonstrating CRUD (Create, Read, Updat
       mvn spring-boot:run
       ```
 
+### 3. Using Docker
+
+1. **Build the Docker image:**
+   ```bash
+   docker build -t crud-spring-boot .
+   ```
+
+2. **Run the container:**
+   ```bash
+   docker run -d -p 8081:8080 --name crud-app crud-spring-boot
+   ```
+
+3. **Access the application:**
+   - Main app: http://localhost:8081/students
+   - H2 Console: http://localhost:8081/h2-console
+
+### 4. Using Docker Compose (Production Ready)
+
+1. **Start with PostgreSQL database:**
+   ```bash
+   docker-compose up -d --build
+   ```
+
+2. **Access the application:**
+   - Main app: http://localhost:8081/students
+   - Database: localhost:5432
+
+## 🚀 Railway Deployment (Recommended)
+
+### Quick Deploy to Railway
+
+1. **Visit Railway**: Go to [railway.app](https://railway.app)
+2. **Sign up/Login**: Use your GitHub account
+3. **Create New Project**: Click "New Project"
+4. **Deploy from GitHub**: Select "Deploy from GitHub repo"
+5. **Select Repository**: Choose `Yash1889/crud-spring-boot`
+6. **Wait for Deployment**: Railway will automatically:
+   - Detect it's a Java project
+   - Install Maven and Java 17
+   - Build the project
+   - Deploy your application
+7. **Access Your App**: Railway will provide a public URL (like `https://your-app-name.railway.app`)
+
+### Railway Features
+- ✅ **Automatic deployments** from GitHub
+- ✅ **Free tier** available
+- ✅ **Custom domains** support
+- ✅ **Environment variables** for configuration
+- ✅ **Built-in monitoring** and logs
+- ✅ **SSL/HTTPS** automatically enabled
+
 ## Accessing the Application
 
 Once the application is running:
@@ -71,3 +122,13 @@ Once the application is running:
     -   User Name: `sa`
     -   Password: (leave blank)
     -   Click "Connect". You can then inspect the `STUDENTS` table.
+
+## Production Deployment
+
+For production deployment, the application includes:
+- Docker configuration for containerization
+- Docker Compose setup with PostgreSQL
+- Production-ready configuration files
+- Railway deployment configuration
+
+The application is ready for deployment to any cloud platform that supports Java applications or Docker containers.
