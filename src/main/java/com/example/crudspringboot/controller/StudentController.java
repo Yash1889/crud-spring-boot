@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 import jakarta.servlet.http.HttpServletRequest;
 
 @Controller
-@RequestMapping("/students")
 public class StudentController {
 
     private final StudentService studentService;
@@ -24,7 +23,13 @@ public class StudentController {
         model.addAttribute("currentUri", request.getRequestURI());
     }
 
-    @GetMapping
+    // Root route - redirect to students page
+    @GetMapping("/")
+    public String home() {
+        return "redirect:/students";
+    }
+
+    @RequestMapping("/students")
     public String listStudents(Model model) {
         model.addAttribute("students", studentService.getAllStudents());
         return "students";
